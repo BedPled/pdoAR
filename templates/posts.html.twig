@@ -1,0 +1,35 @@
+{% extends 'base.html.twig' %}
+
+{% block content %}
+    <div class="container" >
+        <div class="d-flex justify-content-center mb-3 ">
+            <div >
+                <a class="btn d-flex justify-content-center" href="create.php">
+                    <h3>Новая Публикация</h3>
+                </a>
+            </div>
+        </div>
+
+        <div class="table-responsive">
+            {% for post in posts %}
+                <div class="post" style="border: 2px solid #eee; border-radius: 5px; padding: 10px; margin-bottom: 10px">
+                    <h2 class="d-flex justify-content-center">{{ post.getPostTitle() }}</h2>
+                    <div>{{ post.getPostContent() }}</div>
+                    <div class="d-flex flex-row  mb-3 justify-content-end">
+                        <div>
+                            <a class="btn" href="update.php?id={{ post.getId() }}" style="color: green">
+                                Редактировать
+                            </a>
+                        </div>
+
+                        <div>
+                            <a class="btn" href="delete.php?id={{ post.getId() }}" style="color: red">
+                                Удалить
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+{% endblock %}
